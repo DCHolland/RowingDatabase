@@ -60,6 +60,9 @@ CREATE TABLE `practices` (
 --
 
 CREATE TABLE `splits` (
+  `Athlete` text NOT NULL,
+  `Date` int(11) NOT NULL,
+  `Type` int(11) NOT NULL,
   `Split Number` int(11) NOT NULL,
   `Average Rate` int(11) NOT NULL,
   `500 Split` int(11) NOT NULL,
