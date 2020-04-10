@@ -44,6 +44,7 @@ CREATE TABLE `athletes` (
 --
 
 CREATE TABLE `practices` (
+  `Athlete` text NOT NULL,
   `Date` int(11) NOT NULL,
   `Type` int(11) NOT NULL,
   `Total Time` int(11) NOT NULL,
