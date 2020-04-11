@@ -42,10 +42,13 @@
 	array_push($r, $_POST['r19']); array_push($s, $_POST['s19']); array_push($d, $_POST['d19']);
 	array_push($r, $_POST['r20']); array_push($s, $_POST['s20']); array_push($d, $_POST['d20']);
 	$count = 0;
+	$totalDistance = 0;
+	$totalTime = 0.0;
+	$sumRate = 0;
 	
 	//splits converted to seconds
 	function convertToSeconds($mins) {
-		return round($mins, -2)/100*60+($mins-round($mins, -2));
+		return floor($mins/100)*60+($mins-floor($mins/100)*100);
 	}
 
 	//calculated total time based on givens
@@ -62,18 +65,18 @@
 				values ('$athlete', '$date', '$type', '$num', '$r[$i]', '$s[$i]', '$d[$i]', '$tt[$i]')";
 			$result = $conn->query($sql);
 			$count++;
+			$totalDistance+=$d[$i];
+			$totalTime+=$tt[$i];
+			$sumRate+=$r[$i];
 		}
 	}
 	
 	
-	//total time calc, total distance calc, average split calc, average rate calc
-	//$totalDistance = $d1+$d2+$d3+$d4+$d5+$d6+$d7+$d8+$d9+$d10+$d11+$d12+$d13+$d14+$d15+$d16+$d17+$d18+$d19+$d20;
-	//$avgRate = ($r1+$r2+$r3+$r4+$r5+$r6+$r7+$r8+$r9+$r10+$r11+$r12+$r13+$r14+$r15+$r16+$r17+$r18+$r19+$r20)/$count;
-	//Total Time
-	//Average Split
+	$avgRate = $sumRate/$count;
+	$avgSplit = ($totalTime/$totalDistance)*500;
 	
 	$sql = "INSERT INTO practices (Athlete, Date, Type, `Total Time`, `Total Distance`, `Average Split`, `Average Rate`) 
-			values ('$athlete', '$date', '$type', '', '$totalDistance', '', '$avgRate')";
+			values ('$athlete', '$date', '$type', '$totalTime', '$totalDistance', '$avgSplit', '$avgRate')";
 	$result = $conn->query($sql);
 	
 	
