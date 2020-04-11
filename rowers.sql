@@ -47,9 +47,9 @@ CREATE TABLE `practices` (
   `Athlete` text NOT NULL,
   `Date` DATE NOT NULL,
   `Type` text NOT NULL,
-  `Total Time` int(11) NOT NULL,
+  `Total Time` DECIMAL NOT NULL,
   `Total Distance` int(11) NOT NULL,
-  `Average Split` int(11) NOT NULL,
+  `Average Split` DECIMAL NOT NULL,
   `Average Rate` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -65,9 +65,9 @@ CREATE TABLE `splits` (
   `Type` text NOT NULL,
   `Split Number` int(11) NOT NULL,
   `Average Rate` int(11) NOT NULL,
-  `500 Split` int(11) NOT NULL,
+  `500 Split` DECIMAL NOT NULL,
   `Distance` int(11) NOT NULL,
-  `Total Time` int(11) NOT NULL
+  `Total Time` DECIMAL NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

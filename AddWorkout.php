@@ -99,121 +99,121 @@
 			<tr>
 				<td>1</td>
 				<td><input type="number" name="d1"/></td>
-				<td><input type="time" name="s1"/></td>
+				<td><input type="number" name="s1"/></td>
 				<td><input type="number" name="r1"/></td>
 			</tr>
 			<tr>
 				<td>2</td>
 				<td><input type="number" name="d2"/></td>
-				<td><input type="time" name="s2"/></td>
+				<td><input type="number" name="s2"/></td>
 				<td><input type="number" name="r2"/></td>
 			</tr>
 			<tr>
 				<td>3</td>
 				<td><input type="number" name="d3"/></td>
-				<td><input type="time" name="s3"/></td>
+				<td><input type="number" name="s3"/></td>
 				<td><input type="number" name="r3"/></td>
 			</tr>
 			<tr>
 				<td>4</td>
 				<td><input type="number" name="d4"/></td>
-				<td><input type="time" name="s4"/></td>
+				<td><input type="number" name="s4"/></td>
 				<td><input type="number" name="r4"/></td>
 			</tr>
 			<tr>
 				<td>5</td>
 				<td><input type="number" name="d5"/></td>
-				<td><input type="time" name="s5"/></td>
+				<td><input type="number" name="s5"/></td>
 				<td><input type="number" name="r5"/></td>
 			</tr>
 			<tr>
 				<td>6</td>
 				<td><input type="number" name="d6"/></td>
-				<td><input type="time" name="s6"/></td>
+				<td><input type="number" name="s6"/></td>
 				<td><input type="number" name="r6"/></td>
 			</tr>
 			<tr>
 				<td>7</td>
 				<td><input type="number" name="d7"/></td>
-				<td><input type="time" name="s7"/></td>
+				<td><input type="number" name="s7"/></td>
 				<td><input type="number" name="r7"/></td>
 			</tr>
 			<tr>
 				<td>8</td>
 				<td><input type="number" name="d8"/></td>
-				<td><input type="time" name="s8"/></td>
+				<td><input type="number" name="s8"/></td>
 				<td><input type="number" name="r8"/></td>
 			</tr>
 			<tr>
 				<td>9</td>
 				<td><input type="number" name="d9"/></td>
-				<td><input type="time" name="s9"/></td>
+				<td><input type="number" name="s9"/></td>
 				<td><input type="number" name="r9"/></td>
 			</tr>
 			<tr>
 				<td>10</td>
 				<td><input type="number" name="d10"/></td>
-				<td><input type="time" name="s10"/></td>
+				<td><input type="number" name="s10"/></td>
 				<td><input type="number" name="r10"/></td>
 			</tr>
 			<tr>
 				<td>11</td>
 				<td><input type="number" name="d11"/></td>
-				<td><input type="time" name="s11"/></td>
+				<td><input type="number" name="s11"/></td>
 				<td><input type="number" name="r11"/></td>
 			</tr>
 			<tr>
 				<td>12</td>
 				<td><input type="number" name="d12"/></td>
-				<td><input type="time" name="s12"/></td>
+				<td><input type="number" name="s12"/></td>
 				<td><input type="number" name="r12"/></td>
 			</tr>
 			<tr>
 				<td>13</td>
 				<td><input type="number" name="d13"/></td>
-				<td><input type="time" name="s13"/></td>
+				<td><input type="number" name="s13"/></td>
 				<td><input type="number" name="r13"/></td>
 			</tr>
 			<tr>
 				<td>14</td>
 				<td><input type="number" name="d14"/></td>
-				<td><input type="time" name="s14"/></td>
+				<td><input type="number" name="s14"/></td>
 				<td><input type="number" name="r14"/></td>
 			</tr>
 			<tr>
 				<td>15</td>
 				<td><input type="number" name="d15"/></td>
-				<td><input type="time" name="s15"/></td>
+				<td><input type="number" name="s15"/></td>
 				<td><input type="number" name="r15"/></td>
 			</tr>
 			<tr>
 				<td>16</td>
 				<td><input type="number" name="d16"/></td>
-				<td><input type="time" name="s16"/></td>
+				<td><input type="number" name="s16"/></td>
 				<td><input type="number" name="r16"/></td>
 			</tr>
 			<tr>
 				<td>17</td>
 				<td><input type="number" name="d17"/></td>
-				<td><input type="time" name="s17"/></td>
+				<td><input type="number" name="s17"/></td>
 				<td><input type="number" name="r17"/></td>
 			</tr>
 			<tr>
 				<td>18</td>
 				<td><input type="number" name="d18"/></td>
-				<td><input type="time" name="s18"/></td>
+				<td><input type="number" name="s18"/></td>
 				<td><input type="number" name="r18"/></td>
 			</tr>
 			<tr>
 				<td>19</td>
 				<td><input type="number" name="d19"/></td>
-				<td><input type="time" name="s19"/></td>
+				<td><input type="number" name="s19"/></td>
 				<td><input type="number" name="r19"/></td>
 			</tr>
 			<tr>
 				<td>20</td>
 				<td><input type="number" name="d20"/></td>
-				<td><input type="time" name="s20"/></td>
+				<td><input type="number" name="s20"/></td>
 				<td><input type="number" name="r20"/></td>
 			</tr>
 		</tbody>
