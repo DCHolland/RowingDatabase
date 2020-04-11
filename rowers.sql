@@ -45,8 +45,8 @@ CREATE TABLE `athletes` (
 
 CREATE TABLE `practices` (
   `Athlete` text NOT NULL,
-  `Date` int(11) NOT NULL,
-  `Type` int(11) NOT NULL,
+  `Date` DATE NOT NULL,
+  `Type` text NOT NULL,
   `Total Time` int(11) NOT NULL,
   `Total Distance` int(11) NOT NULL,
   `Average Split` int(11) NOT NULL,
@@ -61,8 +61,8 @@ CREATE TABLE `practices` (
 
 CREATE TABLE `splits` (
   `Athlete` text NOT NULL,
-  `Date` int(11) NOT NULL,
-  `Type` int(11) NOT NULL,
+  `Date` DATE NOT NULL,
+  `Type` text NOT NULL,
   `Split Number` int(11) NOT NULL,
   `Average Rate` int(11) NOT NULL,
   `500 Split` int(11) NOT NULL,

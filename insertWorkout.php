@@ -42,17 +42,108 @@
 	//calcs based on entry
 	//$tt1 = $_GET['s1'] $_GET['d1'] ...
 	
-	
-	//if distance not null
 	//split 1
-	//Working:
-	$sql = "INSERT INTO splits (Athlete) value ('Taylor Stoll')";
+	if ($d1 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '1', '$r1', '$s1', '$d1', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d2 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '2', '$r2', '$s2', '$d2', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d3 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '3', '$r3', '$s3', '$d3', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d4 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '4', '$r4', '$s4', '$d4', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d5 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '5', '$r5', '$s5', '$d5', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d6 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '6', '$r6', '$s6', '$d6', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d7 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '7', '$r7', '$s7', '$d7', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d8 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '8', '$r8', '$s8', '$d8', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d9 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '9', '$r9', '$s9', '$d9', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d10 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '10', '$r10', '$s10', '$d10', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d11 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '11', '$r11', '$s11', '$d11', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d12 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '12', '$r12', '$s12', '$d12', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d13 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '13', '$r13', '$s13', '$d13', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d14 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '14', '$r14', '$s14', '$d14', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d15 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '15', '$r15', '$s15', '$d15', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d16 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '16', '$r16', '$s16', '$d16', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d17 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '17', '$r17', '$s17', '$d17', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d18 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '18', '$r18', '$s18', '$d18', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d19 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '19', '$r19', '$s19', '$d19', '')";
+		$result = $conn->query($sql);
+	}
+	if ($d20 != "") {
+		$sql = "INSERT INTO splits (Athlete, Date, Type, `Split Number`, `Average Rate`, `500 Split`, Distance, `Total Time`) 
+			values ('$athlete', '$date', '$type', '20', '$r20', '$s20', '$d20', '')";
+		$result = $conn->query($sql);
+	}
 	
-	//Not Working
-	//$sql = "INSERT INTO splits (Athlete, Date, Split Number, Average Rate, 500 Split, Distance, Total Time) 
-		//values ('$athlete', '$date', '$type', '1', '$r1', '$s1', '$d1', '')";
-	
-	$result = $conn->query($sql);
 	
 	while (ob_get_status()) {
 		ob_end_clean();
