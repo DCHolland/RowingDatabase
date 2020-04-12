@@ -12,7 +12,7 @@
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-	$query = "SELECT * FROM athletes ORDER BY Gender, Experience";
+	$query = "SELECT * FROM athletes ORDER BY Gender, Experience DESC";
 ?>
 
 <html lang="en">
@@ -67,7 +67,7 @@
   
     <table class="table table-striped">
     <thead><th align="left">Name</th><th align="left">Gender</th><th align="left">Experience</th><th align="left">Date Joined</th>
-	<th align="left">Role</th><th align="left">CWID</th><th align="left">Dues Payed</th>
+	<th align="left">Role</th><th align="left">CWID</th><th align="left">Dues Paid</th>
 	</thead>
     <tbody>
 	<?php  //This will be created dynamically in php, but here's an example
@@ -82,7 +82,7 @@
 			$dues = $row["Dues Paid"];
 			
 			if ($isCox==1) $cox="Coxswain"; else $cox="Rower";
-			if ($dues==1) $payed="Yes"; else $payed="<b>No</b>";
+			if ($dues==1) $paid="Yes"; else $paid="<b>No</b>";
 			if ($experience>1) $squad="Varsity"; else $squad="Novice";
 	 
 			echo '<tr> 
@@ -92,8 +92,13 @@
 					  <td>'.$dateJoined.'</td> 
 					  <td>'.$cox.'</td> 
 					  <td>'.$CWID.'</td> 
-					  <td>'.$payed.'</td> 
-					  <td><a href="GraphView.php" class="button">View Details</a></td>
+					  <td>'.$paid.'</td> 
+					  <td><form method="post" action="graphView.php">
+						<input type="submit" name="'.$name.'" value="View Details">
+					  </form></td>
+					  <td><form method="post" action="deleteAthlete.php">
+						<input type="submit" name="'.$name.'" value="Delete">
+					  </form></td>
 				  </tr>';
 		}
 		$result->free();
@@ -104,18 +109,29 @@
 		</table>
 		
 		<table class="table table-striped">
-		<thead><th align="left">Name</th><th align="left">Gender</th><th align="left">Years Experience</th><th align="left">Date Joined</th>
-		<th align="left">Role</th><th align="left">CWID</th><th align="left">Dues Payed</th>
+		<thead><th align="left">Name</th><th align="left">Gender</th><th align="left">Experience</th><th align="left">Date Joined</th>
+		<th align="left">Role</th><th align="left">CWID</th><th align="left">Dues Paid</th>
 		</thead>
 		<tBody>
 		<tr>
 			<td><input type="text" name="Name"/></td>
-			<td><input type="VARCHAR" size=1 maxlength=1 name="Gender"/></td>
-			<td><input type="number" size=1 maxlength=1 name="years"/></td>
+			<td><input type="text" size=1 maxlength=1 name="Gender"/></td>
+			<td><select name="years">
+				<option value=1>Novice</option>
+				<option value=2>2 Years</option>
+				<option value=3>3 Years</option>
+				<option value=4>4+ Years</option>
+			</select></td>
 			<td><input type="date" name="dateJoined"/></td>
-			<td><input type="text" size=5 maxlength=8 name="role"/></td>
+			<td><select name="role">
+				<option value=0>Rower</option>
+				<option value=1>Coxswain</option>
+			</select></td>
 			<td><input type="number" size=6 maxlength=9 name="CWID"/></td>
-			<td><input type="text" size=2 maxlength=3 name="dues"/></td>
+			<td><select name="dues">
+				<option value=0>No</option>
+				<option value=1>Yes</option>
+			</select></td>
 			<td><input type="submit" name="submit"/></td>
 		</tr>
 		

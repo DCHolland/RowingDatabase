@@ -15,22 +15,18 @@
 	
 	//Import Data from addWorkout.php
 	$name = $_POST['Name'];
-	$gender = $_POST['Gender'];
-	$years = $_POST['years'];
-	$dateJoined = $_POST['dateJoined'];
-	$role = $_POST['role'];
-	$CWID = $_POST['CWID'];
-	$dues = $_POST['dues'];
 	
 	
-	$sql = "INSERT INTO athletes (Name, Gender, Experience, `Date Joined`, isCoxswain, CWID, `Dues Paid`) 
-			values ('$name', '$gender', '$years', '$dateJoined', '$role', '$CWID', '$dues')";
+	$sql = "DELETE FROM athletes 
+			WHERE Name=\"".$name."\"";
 	$result = $conn->query($sql);
 	
 	
 	while (ob_get_status()) {
 		ob_end_clean();
 	}
+	
+	echo $sql;
 
-	header( "Location: http://localhost/rowingDatabase/Roster.php" );
+	//header( "Location: http://localhost/rowingDatabase/Roster.php" );
 ?>
