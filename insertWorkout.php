@@ -1,5 +1,5 @@
 <?php
-    //Format - $_GET['athlete'];
+    //Format - $_POST['athlete'];
 	
 	$servername = "localhost";
 	$username = "micah.swedberg";
