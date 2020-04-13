@@ -44,7 +44,7 @@
   <a href="SearchHome.php">Search</a>
   <a href="Roster.php">Roster</a>
 </div>
-  <h1></h1>
+  <h1>GraphView.php</h1>
   
 </body>
 </html>

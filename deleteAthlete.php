@@ -26,7 +26,7 @@
 		ob_end_clean();
 	}
 	
-	echo $sql;
+	//echo $sql;
 
-	//header( "Location: http://localhost/rowingDatabase/Roster.php" );
+	header( "Location: http://localhost/rowingDatabase/Roster.php" );
 ?>

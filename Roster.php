@@ -97,7 +97,8 @@
 						<input type="submit" name="'.$name.'" value="View Details">
 					  </form></td>
 					  <td><form method="post" action="deleteAthlete.php">
-						<input type="submit" name="'.$name.'" value="Delete">
+						<input type="hidden" name="Name" value="'.$name.'">
+						<input type="submit" value="Delete">
 					  </form></td>
 				  </tr>';
 		}
