@@ -5,7 +5,7 @@
 	$username = "micah.swedberg";
 	$password = "password";
 	$dbname = "okstatecrewergtracker";
-	
+
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	// Check connection
@@ -36,7 +36,7 @@
 	  text-decoration: none;
 	  margin-top: 8px;
 	}
-	
+
 	.logo-image{
 		width: 124px;
 		height: 50px;
@@ -44,11 +44,11 @@
 		margin-top: -16px;
 		margin-bottom: -6px;
 	}
-	
+
 	th, td {
 		padding: 18px;
 	}
-	
+
   </style>
 </head>
 
@@ -64,7 +64,7 @@
   <a href="Roster.php">Roster</a>
 </div>
   <h1>Roster</h1>
-  
+
     <table class="table table-striped">
     <thead><th align="left">Name</th><th align="left">Gender</th><th align="left">Experience</th><th align="left">Date Joined</th>
 	<th align="left">Role</th><th align="left">CWID</th><th align="left">Dues Paid</th>
@@ -80,21 +80,22 @@
 			$isCox = $row["isCoxswain"];
 			$CWID = $row["CWID"];
 			$dues = $row["Dues Paid"];
-			
+
 			if ($isCox==1) $cox="Coxswain"; else $cox="Rower";
 			if ($dues==1) $paid="Yes"; else $paid="<b>No</b>";
 			if ($experience>1) $squad="Varsity"; else $squad="Novice";
-	 
-			echo '<tr> 
-					  <td>'.$name.'</td> 
-					  <td>'.$gender.'</td> 
-					  <td>'.$squad.'</td> 
-					  <td>'.$dateJoined.'</td> 
-					  <td>'.$cox.'</td> 
-					  <td>'.$CWID.'</td> 
-					  <td>'.$paid.'</td> 
+
+			echo '<tr>
+					  <td>'.$name.'</td>
+					  <td>'.$gender.'</td>
+					  <td>'.$squad.'</td>
+					  <td>'.$dateJoined.'</td>
+					  <td>'.$cox.'</td>
+					  <td>'.$CWID.'</td>
+					  <td>'.$paid.'</td>
 					  <td><form method="post" action="graphView.php">
 						<input type="submit" name="'.$name.'" value="View Details">
+						<input type="hidden" name="Name" value="'.$name.'">
 					  </form></td>
 					  <td><form method="post" action="deleteAthlete.php">
 						<input type="hidden" name="Name" value="'.$name.'">
@@ -103,12 +104,12 @@
 				  </tr>';
 		}
 		$result->free();
-	} 
+	}
 	?>
   <form action="insertAthlete.php" method="post" onkeydown="return event.key != 'Enter';">
 		</tbody>
 		</table>
-		
+
 		<table class="table table-striped">
 		<thead><th align="left">Name</th><th align="left">Gender</th><th align="left">Experience</th><th align="left">Date Joined</th>
 		<th align="left">Role</th><th align="left">CWID</th><th align="left">Dues Paid</th>
@@ -135,7 +136,7 @@
 			</select></td>
 			<td><input type="submit" name="submit"/></td>
 		</tr>
-		
+
 		</tbody>
 		</table>
 	</form>
