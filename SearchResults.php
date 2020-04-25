@@ -20,7 +20,7 @@
 	  text-decoration: none;
 	  margin-top: 8px;
 	}
-	
+
 	.logo-image{
 		width: 124px;
 		height: 50px;
@@ -28,11 +28,11 @@
 		margin-top: -16px;
 		margin-bottom: -6px;
 	}
-	
+
 	th, td {
 		padding: 18px;
 	}
-	
+
 	a.button {
 		-webkit-appearance: button;
 		-moz-appearance: button;
@@ -41,7 +41,7 @@
 		text-decoration: none;
 		color: gray;
 	}
-	
+
   </style>
 </head>
 
@@ -58,7 +58,29 @@
 </div>
   <h1>Search Results:</h1>
   <h2><?=$_GET['athlete'], " - ", $_GET['type'], " - ", $_GET['date'];?></h2>
-  
+  <?php
+  $servername = "localhost";
+  $username = "micah.swedberg";
+  $password = "password";
+  $dbname = "okstatecrewergtracker";
+
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+    $name =$_GET['athlete'];
+    $sql = "SELECT * FROM `practices` WHERE Athlete LIKE '%{$name}%'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "id: " . $row["Athlete"]. " - Name: " . $row["Date"]. " " . $row["Type"]. "<br>";
+      }
+    }
+    ?>
     <table class="table table-striped">
     <thead><th align="left">Date</th><th align="left">Athlete</th><th align="left">Type</th><th align="left">Distance</th><th align="left">Split</th><th align="left">Rate</th><th align="left">Time</th></thead>
     <tbody>
@@ -75,6 +97,6 @@
 		</tr>
 	</tbody>
 	</table>
-  
+
 </body>
 </html>
