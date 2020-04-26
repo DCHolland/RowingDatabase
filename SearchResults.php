@@ -80,6 +80,8 @@
       $date =$_GET['date'];
       if($name != "All" && $date != "" && $type != "Any")
         $sql = "SELECT * FROM `practices` WHERE Type LIKE '%{$type}%' AND Date LIKE '%{$date}%' AND Athlete LIKE '%{$name}%'";
+      if($name == "All" && $date == "" && $type == "Any")
+        $sql = "SELECT * FROM `practices`";
       if($date == "" && $type == "Any" && $name != "All")
         $sql = "SELECT * FROM `practices` WHERE Athlete LIKE '%{$name}%'";
       if($name == "All" && $type == "Any" &&  $date != "")
