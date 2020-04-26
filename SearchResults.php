@@ -58,34 +58,46 @@
 </div>
   <h1>Search Results:</h1>
   <h2><?=$_GET['athlete'], " - ", $_GET['type'], " - ", $_GET['date'];?></h2>
-  <?php
-  $servername = "localhost";
-  $username = "micah.swedberg";
-  $password = "password";
-  $dbname = "okstatecrewergtracker";
 
-  // Create connection
-  $conn = new mysqli($servername, $username, $password, $dbname);
-  // Check connection
-  if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  }
-    $name =$_GET['athlete'];
-    $sql = "SELECT * FROM `practices` WHERE Athlete LIKE '%{$name}%'";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($result)) {
-        echo "id: " . $row["Athlete"]. " - Name: " . $row["Date"]. " " . $row["Type"]. "<br>";
-      }
-    }
-    ?>
     <table class="table table-striped">
     <thead><th align="left">Date</th><th align="left">Athlete</th><th align="left">Type</th><th align="left">Distance</th><th align="left">Split</th><th align="left">Rate</th><th align="left">Time</th></thead>
     <tbody>
 		<?//This will be created dynamically in php, but here's an example?>
-		<tr>
+    <?php
+    $servername = "localhost";
+    $username = "micah.swedberg";
+    $password = "password";
+    $dbname = "okstatecrewergtracker";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+      $name =$_GET['athlete'];
+      $sql = "SELECT * FROM `practices` WHERE Athlete LIKE '%{$name}%'";
+      $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_assoc($result)) {
+      echo "<tr>";
+      echo "<td>". $row["Date"]."</td>";
+      echo "<td>".$row["Athlete"]."</td>";
+      echo "<td>" . $row["Type"]. "</td>";
+      echo "<td>" . $row["Total Distance"]. "</td>";
+      echo "<td>" . $row["Average Split"]. "</td>";
+      echo "<td>" . $row["Average Rate"]. "</td>";
+      echo "<td>" . $row["Total Time"]. "</td>";
+      echo '<td><form method="post" action="WorkoutView.php">
+      			<input type="submit" name="'.$name.'" value="View Splits">
+      			<input type="hidden" name="Name" value="'.$row["Athlete"].'">
+            <input type="hidden" name="Name" value="'.$row["Type"].'">
+          	<input type="hidden" name="Name" value="'.$row["Date"].'">
+      			</form></td>';
+
+      echo "</tr>";
+    }
+    ?>
+    <tr>
 			<td>04/03/2020</td>
 			<td>Ellie Pope</td>
 			<td>Test</td>
