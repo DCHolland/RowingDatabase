@@ -76,7 +76,23 @@
       die("Connection failed: " . $conn->connect_error);
     }
       $name =$_GET['athlete'];
-      $sql = "SELECT * FROM `practices` WHERE Athlete LIKE '%{$name}%'";
+      $type =$_GET['type'];
+      $date =$_GET['date'];
+      if($name != "All" && $date != "" && $type != "Any")
+        $sql = "SELECT * FROM `practices` WHERE Type LIKE '%{$type}%' AND Date LIKE '%{$date}%' AND Athlete LIKE '%{$name}%'";
+      if($date == "" && $type == "Any" && $name != "All")
+        $sql = "SELECT * FROM `practices` WHERE Athlete LIKE '%{$name}%'";
+      if($name == "All" && $type == "Any" &&  $date != "")
+        $sql = "SELECT * FROM `practices` WHERE Date LIKE '%{$date}%'";
+      if($name == "All" && $date == "" && $type !="Any")
+        $sql = "SELECT * FROM `practices` WHERE Type LIKE '%{$type}%'";
+      if($name != "All" && $type != "Any" &&  $date == "")
+        $sql = "SELECT * FROM `practices` WHERE Athlete LIKE '%{$name}%' AND Type LIKE '%{$type}%'";
+      if($name != "All" && $type == "Any" &&  $date != "")
+        $sql = "SELECT * FROM `practices` WHERE Date LIKE '%{$date}%' AND Athlete LIKE '%{$name}%'";
+      if($name == "All" && $type != "Any" &&  $date != "")
+        $sql = "SELECT * FROM `practices` WHERE Date LIKE '%{$date}%' AND Type LIKE '%{$type}%'";
+
       $result = mysqli_query($conn, $sql);
     while($row = mysqli_fetch_assoc($result)) {
       echo "<tr>";
@@ -89,24 +105,15 @@
       echo "<td>" . $row["Total Time"]. "</td>";
       echo '<td><form method="post" action="WorkoutView.php">
       			<input type="submit" name="'.$name.'" value="View Splits">
-      			<input type="hidden" name="Name" value="'.$row["Athlete"].'">
-            <input type="hidden" name="Name" value="'.$row["Type"].'">
-          	<input type="hidden" name="Name" value="'.$row["Date"].'">
+      			<input type="hidden" name="athlete" value="'.$row["Athlete"].'">
+            <input type="hidden" name="type" value="'.$row["Type"].'">
+          	<input type="hidden" name="date" value="'.$row["Date"].'">
       			</form></td>';
 
       echo "</tr>";
     }
     ?>
-    <tr>
-			<td>04/03/2020</td>
-			<td>Ellie Pope</td>
-			<td>Test</td>
-			<td>2000</td>
-			<td>1:53</td>
-			<td>29</td>
-			<td>7:42</td>
-			<td><a href="WorkoutView.php" class="button">View Splits</a></td>
-		</tr>
+
 	</tbody>
 	</table>
 

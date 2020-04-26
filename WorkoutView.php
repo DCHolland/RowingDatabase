@@ -21,7 +21,7 @@
 	  text-decoration: none;
 	  margin-top: 8px;
 	}
-	
+
 	.logo-image{
 		width: 124px;
 		height: 50px;
@@ -29,7 +29,7 @@
 		margin-top: -16px;
 		margin-bottom: -6px;
 	}
-	
+
   </style>
 </head>
 
@@ -45,7 +45,7 @@
   <a href="Roster.php">Roster</a>
 </div>
   <h1>Workout View:</h1>
-  <h2><?=$_GET['athlete'], " - ", $_GET['type'], " - ", $_GET['date'];?></h2>
-  
+  <h2><?=$_POST['athlete'], " - ",$_POST['type'], " - ", $_POST['date'];?></h2>
+
 </body>
 </html>
