@@ -69,9 +69,75 @@
 }
 </style>
 
+<?php
+$servername = "localhost";
+$username = "micah.swedberg";
+$password = "password";
+$dbname = "okstatecrewergtracker";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+$name = $_POST['Name'];
+
+$sql = "SELECT DISTINCT Date FROM `splits` WHERE Athlete LIKE '%{$name}%'";
+$result = mysqli_query($conn, $sql);
+$count = 0;
+while($row = mysqli_fetch_assoc($result)) {
+  $count++;
+}
+$array = array_fill(0,$count,0);
+$timeArray = array_fill(0,$count,0);
+
+$result = mysqli_query($conn, $sql);
+$i =0;
+while($row = mysqli_fetch_assoc($result)) {
+  $array[$i] =$row["Date"];
+  $i++;
+}
+
+sort($array);
+$index =0;
+foreach($array as $value){
+    $sql = "SELECT * FROM `splits` WHERE Athlete LIKE '%{$name}%' AND Date LIKE '%{$value}%' ";
+    $result = mysqli_query($conn, $sql);
+    $count = 0;
+    $average = 0;
+    while($row = mysqli_fetch_assoc($result)) {
+      $average = $average + $row['Total Time'];
+      $count++;
+    }
+    $average = $average / $count;
+    $timeArray[$index] = $average;
+    $index++;
+}
+
+?>
+
+
 <script type="text/javascript">
 $(function () {
-    var data1 = [[0,150],[1,15],[2,200],[3,75],[4,180],[5,175]]
+
+
+  var dateArray = <?php echo json_encode($array); ?>;
+   var timeArray = <?php echo json_encode($timeArray); ?>;
+   var matrix = [];
+   var matrix2 = [];
+
+   for(var i=0; i<dateArray.length; i++) {
+       matrix[i] = new Array(dateArray.length);
+       matrix2[i] = new Array(dateArray.length);
+
+   }
+   for (i = 0; i < dateArray.length; i++) {
+     matrix[i][0] = i;
+     matrix2[i][0] = i;
+     matrix[i][1] = timeArray[i];
+     matrix2[i][1] = dateArray[i];
+  }
 
     var options = {
             series:{
@@ -80,12 +146,16 @@ $(function () {
             bars:{
                   barWidth:.9
             },
+            xaxis:{
+              show: true,
+              ticks: matrix2,
+            },
             grid:{
                 backgroundColor: { colors: ["#FFFFFF", "#646464"] }
             }
     };
 
-    $.plot($("#flotcontainer"), [data1], options);
+    $.plot($("#flotcontainer"), [matrix], options);
 
 });
 </script>
