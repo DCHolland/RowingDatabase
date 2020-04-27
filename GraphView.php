@@ -63,9 +63,9 @@
 
 <style type="text/css">
 #flotcontainer {
-    width: 600px;
-    height: 200px;
-    text-align: left;
+    width: 800px;
+    height: 400px;
+    text-align: center;
 }
 </style>
 
@@ -144,15 +144,20 @@ $(function () {
                 bars:{show: true}
             },
             bars:{
-                  barWidth:.9
+                  barWidth:.9,
+
             },
             xaxis:{
               show: true,
-              ticks: matrix2,
+              ticks: matrix2
+            },
+            yaxis:{
+              tickSize: 10
             },
             grid:{
                 backgroundColor: { colors: ["#FFFFFF", "#646464"] }
-            }
+              }
+
     };
 
     $.plot($("#flotcontainer"), [matrix], options);
