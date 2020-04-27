@@ -111,7 +111,7 @@ foreach($array as $value){
       $count++;
     }
     $average = $average / $count;
-    $timeArray[$index] = $average;
+    $timeArray[$index] = $average/60;
     $index++;
 }
 
@@ -152,7 +152,7 @@ $(function () {
               ticks: matrix2
             },
             yaxis:{
-              tickSize: 10
+              tickSize: 1
             },
             grid:{
                 backgroundColor: { colors: ["#FFFFFF", "#646464"] }
