@@ -232,8 +232,7 @@ $(function () {
 });
 </script>
 <br></b>
-<h1><?php echo (str_repeat('&nbsp;', 5)); echo ("Graph for : " . $type)?></h1>
-<br></b>
+<h1><?php echo (str_repeat('&nbsp;', 20)); echo ("Graph for : " . $type)?></h1>
 
 <b>Minutes<br><br></b>
 
