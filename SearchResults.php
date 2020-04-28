@@ -77,7 +77,7 @@
 			<option value="Novice">Novice</option>
 		</select></td>
 		<td><input type="submit" value="Search"></td>
-	</tr>	
+	</tr>
 	</tbody>
 	</table>
 	</form>
@@ -100,19 +100,19 @@
       $name =$_GET['athlete'];
       $type =$_GET['type'];
       $date =$_GET['date'];
-	  
+
 	  //filters
 	  $gender =$_GET['gender'];
 	  $squad =$_GET['squad'];
-	  
+
 	//determine query based on search parameters
-	$sql = "SELECT * FROM practices P FULL JOIN athletes A ON P.Athlete=A.Name";
+  $sql =   "SELECT * FROM practices P LEFT JOIN athletes A ON A.Name = P.Athlete";
 	  //Full Search Parameters
       if($name != "All" && $date != "" && $type != "Any")
         $sql = $sql . " WHERE Type LIKE '%{$type}%' AND Date LIKE '%{$date}%' AND Athlete LIKE '%{$name}%'";
       //Name Parameters
 	  else if($date == "" && $type == "Any" && $name != "All")
-        $sql = $sql . " WHERE Athlete LIKE '%{$name}%'";
+        $sql = $sql . " WHERE P.Athlete LIKE '%{$name}%'";
       //Date Parameters
 	  else if($name == "All" && $type == "Any" &&  $date != "")
         $sql = $sql . " WHERE Date LIKE '%{$date}%'";
@@ -128,7 +128,7 @@
       //Date and Type Parameters
 	  else if($name == "All" && $type != "Any" &&  $date != "")
         $sql = $sql . " WHERE Date LIKE '%{$date}%' AND Type LIKE '%{$type}%'";
-	
+
 	  //Filtered Parameters
 	  if($gender != "Any")
         $sql = $sql . " AND Gender LIKE '%{$gender}%'";
