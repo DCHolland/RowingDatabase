@@ -65,7 +65,7 @@ $name = $_POST['Name'];
 </div>
   <h1><?php echo (str_repeat('&nbsp;', 5)); echo ($name . " - Edit Athlete Info")?></h1>
     <table class="table table-striped">
-    <thead><th align="left">Gender</th><th align="left">Experience</th><th align="left">Date Joined</th>
+    <thead><th align="left">Name</th><th align="left">Gender</th><th align="left">Experience</th><th align="left">Date Joined</th>
 	<th align="left">Role</th><th align="left">CWID</th><th align="left">Dues Paid</th>
 	</thead>
     <tbody>
@@ -85,18 +85,31 @@ $name = $_POST['Name'];
 			if ($dues==1) $paid="Yes"; else $paid="<b>No</b>";
 			if ($experience>1) $squad="Varsity"; else $squad="Novice";
 
-			echo '<tr>
-					  <td>'.$gender.'</td>
-					  <td>'.$squad.'</td>
-					  <td>'.$dateJoined.'</td>
-					  <td>'.$cox.'</td>
-					  <td>'.$CWID.'</td>
-					  <td>'.$paid.'</td>
-					  <td><form method="post" action="editAthlete.php">
-						<input type="submit" name="'.$name.'" value="Edit">
-						<input type="hidden" name="Name" value="'.$name.'">
-					  </form></td>
-				  </tr>';
+			echo '
+			<form action="insertAthlete.php" method="post" onkeydown="return event.key != \'Enter\';">
+				<tr>
+					<td><input type="text" name="name" value="'.$name.'"/></td>
+					<td> <input type="text" size=1 maxlength=1 name="gender" value="'.$gender.'"/> </td>
+					<td><select name="years">
+						<option value=1>Novice</option>
+						<option value=2>2 Years</option>
+						<option value=3>3 Years</option>
+						<option value=4>4+ Years</option>
+					</select></td>
+					<td><input type="date" name="dateJoined" value="'.$dateJoined.'"/></td>
+					<td><select name="role">
+						<option value=0>Rower</option>
+						<option value=1>Coxswain</option>
+					</select></td>
+					<td><input type="number" size=6 maxlength=9 name="CWID" value="'.$CWID.'"/></td>
+					<td><select name="dues">
+						<option value=0>No</option>
+						<option value=1>Yes</option>
+					</select></td>
+					<td><input type="submit" value="Edit"></td>
+				</tr>
+			</form>';
+				  
 		}
 	}
 	?>

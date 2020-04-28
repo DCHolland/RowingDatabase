@@ -14,7 +14,7 @@
 	}
 	
 	//Import Data from addWorkout.php
-	$name = $_POST['Name'];
+	$name = $_POST['name'];
 	
 	
 	$sql = "DELETE FROM athletes 

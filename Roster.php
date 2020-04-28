@@ -95,10 +95,10 @@
 					  <td>'.$paid.'</td>
 					  <td><form method="post" action="graphView.php">
 						<input type="submit" name="'.$name.'" value="View Details">
-						<input type="hidden" name="Name" value="'.$name.'">
+						<input type="hidden" name="name" value="'.$name.'">
 					  </form></td>
 					  <td><form method="post" action="deleteAthlete.php">
-						<input type="hidden" name="Name" value="'.$name.'">
+						<input type="hidden" name="name" value="'.$name.'">
 						<input type="submit" value="Delete">
 					  </form></td>
 				  </tr>';
@@ -116,8 +116,8 @@
 		</thead>
 		<tBody>
 		<tr>
-			<td><input type="text" name="Name"/></td>
-			<td><input type="text" size=1 maxlength=1 name="Gender"/></td>
+			<td><input type="text" name="name"/></td>
+			<td><input type="text" size=1 maxlength=1 name="gender"/></td>
 			<td><select name="years">
 				<option value=1>Novice</option>
 				<option value=2>2 Years</option>
