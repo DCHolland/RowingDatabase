@@ -63,6 +63,8 @@
 			<option value="Other">Other</option>
 		</select>
 	<br><br>
+		<input type="hidden" name="gender" value="Any">
+		<input type="hidden" name="squad" value="Any">
 		<input type="submit" value="Search">
 	</form>
 </body>

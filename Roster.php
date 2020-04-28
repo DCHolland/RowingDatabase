@@ -12,7 +12,10 @@
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-	$query = "SELECT * FROM athletes ORDER BY isCoxswain, Gender, Experience DESC, Name ASC";
+	$query = "SELECT COUNT(DISTINCT Name) as total FROM athletes";
+	$result = $conn->query($query);
+	$row = $result->fetch_assoc();
+	$count = $row['total'];
 ?>
 
 <html lang="en">
@@ -63,7 +66,7 @@
   <a href="SearchHome.php">Search</a>
   <a href="Roster.php">Roster</a>
 </div>
-  <h1>Roster</h1>
+  <h1>Roster - <?=$count?> Athletes</h1>
 
     <table class="table table-striped">
     <thead><th align="left">Name</th><th align="left">Gender</th><th align="left">Experience</th><th align="left">Date Joined</th>
@@ -71,6 +74,7 @@
 	</thead>
     <tbody>
 	<?php  
+	$query = "SELECT * FROM athletes ORDER BY isCoxswain, Gender, Experience DESC, Name ASC";
 	if ($result = $conn->query($query)) {
 		while ($row = $result->fetch_assoc()) {
 			$name = $row["Name"];
