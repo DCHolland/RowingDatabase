@@ -12,7 +12,7 @@
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-	$query = "SELECT * FROM athletes ORDER BY Gender, Experience DESC";
+	$query = "SELECT * FROM athletes ORDER BY isCoxswain, Gender, Experience DESC, Name ASC";
 ?>
 
 <html lang="en">
@@ -70,7 +70,7 @@
 	<th align="left">Role</th><th align="left">CWID</th><th align="left">Dues Paid</th>
 	</thead>
     <tbody>
-	<?php  //This will be created dynamically in php, but here's an example
+	<?php  
 	if ($result = $conn->query($query)) {
 		while ($row = $result->fetch_assoc()) {
 			$name = $row["Name"];

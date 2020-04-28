@@ -34,9 +34,28 @@
 		margin-top: -16px;
 		margin-bottom: -6px;
 	}
+	
+	th, td {
+		padding: 18px;
+	}
 
   </style>
 </head>
+<?php
+$servername = "localhost";
+$username = "micah.swedberg";
+$password = "password";
+$dbname = "okstatecrewergtracker";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+$name = $_POST['Name'];
+?>
+
 
 <body style="background-color:orange;" class="container">
 <div class="navbar">
@@ -49,7 +68,44 @@
   <a href="SearchHome.php">Search</a>
   <a href="Roster.php">Roster</a>
 </div>
-  <h1>GraphView.php</h1>
+  <h1><?php echo (str_repeat('&nbsp;', 5)); echo ($name . " - Athlete Stats")?></h1>
+    <table class="table table-striped">
+    <thead><th align="left">Gender</th><th align="left">Experience</th><th align="left">Date Joined</th>
+	<th align="left">Role</th><th align="left">CWID</th><th align="left">Dues Paid</th>
+	</thead>
+    <tbody>
+	<?php
+	$query = "SELECT * FROM athletes WHERE Name LIKE '%{$name}%'";
+	if ($result = $conn->query($query)) {
+		while ($row = $result->fetch_assoc()) {
+			$name = $row["Name"];
+			$gender = $row["Gender"];
+			$experience = $row["Experience"];
+			$dateJoined = $row["Date Joined"];
+			$isCox = $row["isCoxswain"];
+			$CWID = $row["CWID"];
+			$dues = $row["Dues Paid"];
+
+			if ($isCox==1) $cox="Coxswain"; else $cox="Rower";
+			if ($dues==1) $paid="Yes"; else $paid="<b>No</b>";
+			if ($experience>1) $squad="Varsity"; else $squad="Novice";
+
+			echo '<tr>
+					  <td>'.$gender.'</td>
+					  <td>'.$squad.'</td>
+					  <td>'.$dateJoined.'</td>
+					  <td>'.$cox.'</td>
+					  <td>'.$CWID.'</td>
+					  <td>'.$paid.'</td>
+					  <td><form method="post" action="editAthlete.php">
+						<input type="submit" name="'.$name.'" value="Edit">
+						<input type="hidden" name="Name" value="'.$name.'">
+					  </form></td>
+				  </tr>';
+		}
+	}
+	?>
+	</tbody>
 
 <script language="javascript" type="text/javascript" src="/rowingDatabase/flot/jquery.canvaswrapper.js"></script>
 <script language="javascript" type="text/javascript" src="/rowingDatabase/flot/jquery.colorhelpers.js"></script>
@@ -70,19 +126,6 @@
 </style>
 
 <?php
-$servername = "localhost";
-$username = "micah.swedberg";
-$password = "password";
-$dbname = "okstatecrewergtracker";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-$name = $_POST['Name'];
-
 $sql = "SELECT DISTINCT Date FROM `splits` WHERE Athlete LIKE '%{$name}%'";
 $result = mysqli_query($conn, $sql);
 $count = 0;
@@ -152,6 +195,7 @@ $(function () {
               ticks: matrix2
             },
             yaxis:{
+			  show: true,
               tickSize: 1
             },
             grid:{
@@ -164,26 +208,10 @@ $(function () {
 
 });
 </script>
+<b>Minutes<br><br></b>
 <div id="legendPlaceholder"></div>
 <div id="flotcontainer"></div>
-<?php
-$servername = "localhost";
-$username = "micah.swedberg";
-$password = "password";
-$dbname = "okstatecrewergtracker";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-$name = $_POST['Name'];
-
-echo 'Histogram Data for: ' . $name .' ';
-
-
-?>
-
+<?php echo(str_repeat('&nbsp;', 10)); echo("<b>Date</b><br><br>");?>
+<?="<h2>&nbsp Athlete Info</h2>"?>
 </body>
 </html>

@@ -29,6 +29,10 @@
 		margin-top: -16px;
 		margin-bottom: -6px;
 	}
+	
+	th, td {
+		padding: 18px;
+	}
 
   </style>
 </head>
