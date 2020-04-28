@@ -34,7 +34,7 @@
 		margin-top: -16px;
 		margin-bottom: -6px;
 	}
-	
+
 	th, td {
 		padding: 18px;
 	}
@@ -54,6 +54,8 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 $name = $_POST['name'];
+$type = $_POST['type'];
+
 ?>
 
 
@@ -69,6 +71,27 @@ $name = $_POST['name'];
   <a href="Roster.php">Roster</a>
 </div>
   <h1><?php echo (str_repeat('&nbsp;', 5)); echo ($name . " - Athlete Stats")?></h1>
+  <form method="post" action="graphView.php">
+  <input type="submit" name="'.$name.'" value="Steady State">
+    <input type="hidden" name="name" value = "<?php echo $name?>">
+    <input type="hidden" name="type" value = "Steady State">
+  </form></td>
+    <form method="post" action="graphView.php">
+  <input type="submit" name="'.$name.'" value="Intervals Time">
+    <input type="hidden" name="name" value = "<?php echo $name?>">
+    <input type="hidden" name="type" value = "Intervals - Time">
+  </form></td>
+    <form method="post" action="graphView.php">
+  <input type="submit" name="'.$name.'" value="Intervals Distance">
+    <input type="hidden" name="name" value = "<?php echo $name?>">
+    <input type="hidden" name="type" value = "Intervals - Distance">
+  </form></td>
+    <form method="post" action="graphView.php">
+  <input type="submit" name="'.$name.'" value="Rate Ramp">
+    <input type="hidden" name="name" value = "<?php echo $name?>">
+    <input type="hidden" name="type" value = "Rate Ramp">
+  </form></td>
+
     <table class="table table-striped">
     <thead><th align="left">Gender</th><th align="left">Experience</th><th align="left">Date Joined</th>
 	<th align="left">Role</th><th align="left">CWID</th><th align="left">Dues Paid</th>
@@ -126,7 +149,7 @@ $name = $_POST['name'];
 </style>
 
 <?php
-$sql = "SELECT DISTINCT Date FROM `splits` WHERE Athlete LIKE '%{$name}%'";
+$sql = "SELECT DISTINCT Date FROM `splits` WHERE Athlete LIKE '%{$name}%' AND Type LIKE '%{$type}%'";
 $result = mysqli_query($conn, $sql);
 $count = 0;
 while($row = mysqli_fetch_assoc($result)) {
@@ -145,7 +168,7 @@ while($row = mysqli_fetch_assoc($result)) {
 sort($array);
 $index =0;
 foreach($array as $value){
-    $sql = "SELECT * FROM `splits` WHERE Athlete LIKE '%{$name}%' AND Date LIKE '%{$value}%' ";
+    $sql = "SELECT * FROM `splits` WHERE Athlete LIKE '%{$name}%' AND Date LIKE '%{$value}%'  AND Type LIKE '%{$type}%'";
     $result = mysqli_query($conn, $sql);
     $count = 0;
     $average = 0;
@@ -208,7 +231,9 @@ $(function () {
 
 });
 </script>
+<br></b>
 <b>Minutes<br><br></b>
+
 <div id="legendPlaceholder"></div>
 <div id="flotcontainer"></div>
 <?php echo(str_repeat('&nbsp;', 10)); echo("<b>Date</b><br><br>");?>

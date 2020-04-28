@@ -70,7 +70,7 @@
 	<th align="left">Role</th><th align="left">CWID</th><th align="left">Dues Paid</th>
 	</thead>
     <tbody>
-	<?php  
+	<?php
 	if ($result = $conn->query($query)) {
 		while ($row = $result->fetch_assoc()) {
 			$name = $row["Name"];
@@ -96,6 +96,7 @@
 					  <td><form method="post" action="graphView.php">
 						<input type="submit" name="'.$name.'" value="View Details">
 						<input type="hidden" name="name" value="'.$name.'">
+						<input type="hidden" name="type" value = "Intervals - Distance">
 					  </form></td>
 					  <td><form method="post" action="deleteAthlete.php">
 						<input type="hidden" name="name" value="'.$name.'">
