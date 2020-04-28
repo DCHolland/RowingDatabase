@@ -232,6 +232,9 @@ $(function () {
 });
 </script>
 <br></b>
+<h1><?php echo (str_repeat('&nbsp;', 5)); echo ("Graph for : " . $type)?></h1>
+<br></b>
+
 <b>Minutes<br><br></b>
 
 <div id="legendPlaceholder"></div>
