@@ -72,7 +72,6 @@
   <a href="Roster.php">Roster</a>
 </div>
   <h1>Add Workout</h1>
-  <?php//post: hide values in url?>
   <form action="insertWorkout.php" method="post" onkeydown="return event.key != 'Enter';">
 		<b>Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="date" id="date" name="date" value=<?=date("Y-m-d");?>>
