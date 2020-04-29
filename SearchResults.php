@@ -107,35 +107,47 @@
 
 	//determine query based on search parameters
   $sql =   "SELECT * FROM practices P LEFT JOIN athletes A ON A.Name = P.Athlete";
+	  if($name != "All" || $date != "" || $type != "Any")
+		$sql = $sql . " WHERE ";
 	  //Full Search Parameters
       if($name != "All" && $date != "" && $type != "Any")
-        $sql = $sql . " WHERE Type LIKE '%{$type}%' AND Date LIKE '%{$date}%' AND Athlete LIKE '%{$name}%'";
+        $sql = $sql . "Type LIKE '%{$type}%' AND Date LIKE '%{$date}%' AND Athlete LIKE '%{$name}%'";
       //Name Parameters
 	  else if($date == "" && $type == "Any" && $name != "All")
-        $sql = $sql . " WHERE P.Athlete LIKE '%{$name}%'";
+        $sql = $sql . "P.Athlete LIKE '%{$name}%'";
       //Date Parameters
 	  else if($name == "All" && $type == "Any" &&  $date != "")
-        $sql = $sql . " WHERE Date LIKE '%{$date}%'";
+        $sql = $sql . "Date LIKE '%{$date}%'";
       //Type Parameters
 	  else if($name == "All" && $date == "" && $type !="Any")
-        $sql = $sql . " WHERE Type LIKE '%{$type}%'";
+        $sql = $sql . "Type LIKE '%{$type}%'";
       //Name and Type Parameters
 	  else if($name != "All" && $type != "Any" &&  $date == "")
-        $sql = $sql . " WHERE Athlete LIKE '%{$name}%' AND Type LIKE '%{$type}%'";
+        $sql = $sql . "Athlete LIKE '%{$name}%' AND Type LIKE '%{$type}%'";
       //Name and Date Parameters
 	  else if($name != "All" && $type == "Any" &&  $date != "")
-        $sql = $sql . " WHERE Date LIKE '%{$date}%' AND Athlete LIKE '%{$name}%'";
+        $sql = $sql . "Date LIKE '%{$date}%' AND Athlete LIKE '%{$name}%'";
       //Date and Type Parameters
 	  else if($name == "All" && $type != "Any" &&  $date != "")
-        $sql = $sql . " WHERE Date LIKE '%{$date}%' AND Type LIKE '%{$type}%'";
+        $sql = $sql . "Date LIKE '%{$date}%' AND Type LIKE '%{$type}%'";
 
 	  //Filtered Parameters
+	 if($name == "All" && $date == "" && $type == "Any") {
+	  if($gender != "Any")
+        $sql = $sql . "Gender LIKE '%{$gender}%'";
+	  if($squad == "Novice")
+        $sql = $sql . "Experience <= 1";
+	  else if($squad == "Varsity")
+        $sql = $sql . "Experience > 1";
+	 }
+	 else {
 	  if($gender != "Any")
         $sql = $sql . " AND Gender LIKE '%{$gender}%'";
 	  if($squad == "Novice")
         $sql = $sql . " AND Experience <= 1";
 	  else if($squad == "Varsity")
         $sql = $sql . " AND Experience > 1";
+	 }
 
       $result = mysqli_query($conn, $sql);
     while($row = mysqli_fetch_array($result)) {
