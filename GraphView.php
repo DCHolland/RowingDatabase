@@ -81,8 +81,8 @@ $type = $_POST['type'];
     <input type="hidden" name="name" value = "<?php echo $name?>">
     <input type="hidden" name="type" value = "Intervals - Time">
   </form></td>
-    <form method="post" action="graphView.php">
-  <input type="submit" name="'.$name.'" value="Intervals Distance">
+  <form method="post" action="graphView.php">
+    <input type="submit" name="'.$name.'" value="Intervals Distance">
     <input type="hidden" name="name" value = "<?php echo $name?>">
     <input type="hidden" name="type" value = "Intervals - Distance">
   </form></td>
@@ -90,6 +90,11 @@ $type = $_POST['type'];
   <input type="submit" name="'.$name.'" value="Rate Ramp">
     <input type="hidden" name="name" value = "<?php echo $name?>">
     <input type="hidden" name="type" value = "Rate Ramp">
+  </form></td>
+  <form method="post" action="graphView.php">
+    <input type="submit" name="'.$name.'" value="Test">
+    <input type="hidden" name="name" value = "<?php echo $name?>">
+    <input type="hidden" name="type" value = "test">
   </form></td>
 
     <table class="table table-striped">
